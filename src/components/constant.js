@@ -1,0 +1,1 @@
+export const HOST = (Number(window.location.port) === 3000) ? 'http://localhost:20782' : '';
