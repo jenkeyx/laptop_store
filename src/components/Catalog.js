@@ -40,9 +40,7 @@ export default function (props) {
                         <Card onClick={()=>{window.location.href = '/catalog/bases/'+ item.id}}>
                             <CardActionArea>
                                 <ImageWrap>
-                                    <img
-                                        src={item.imgUrl}
-                                    />
+                                    <img src={item.imgUrl}/>
                                 </ImageWrap>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
