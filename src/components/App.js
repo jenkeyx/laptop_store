@@ -61,7 +61,7 @@ class App extends React.Component {
                         <Welcome
                             authStatus = {this.state.authStatus}
                             usernameChange = {this.handleLoginChange}
-                            passwordCHange = {this.handlePasswordChange}
+                            passwordChange = {this.handlePasswordChange}
                             changeAuthstatus = {this.changeAuthStatus}
                         />
                     </Route>

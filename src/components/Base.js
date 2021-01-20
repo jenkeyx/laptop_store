@@ -3,7 +3,7 @@ import {HOST} from "./constant";
 import * as React from "react";
 import {useParams} from "react-router";
 import styled from "styled-components";
-import {Typography} from "@material-ui/core";
+import {Button, Typography} from "@material-ui/core";
 import ToggleComponent from "./ToggleComponent";
 
 const BaseWrap = styled.div`
@@ -11,7 +11,6 @@ const BaseWrap = styled.div`
   height: 10000vh;
   display: flex;
   flex-wrap: wrap;
-  //padding: 10%;
   justify-content: space-evenly;
 `
 const PreviewWrap = styled.div`
@@ -34,11 +33,17 @@ const Content = styled.div`
 `
 const ContentWrap = styled.div`
   width: 50%;
-  //background-color: cadetblue;
 
   & > * {
     padding: 10%;
   }
+`
+const BackButton = styled(Button)`
+  position: fixed;
+!important;
+  top: 0;
+  left: 0;
+  right: 0;
 `
 
 export default function () {
@@ -56,23 +61,32 @@ export default function () {
         <BaseWrap>
             {result && <>
                 <PreviewWrap>
-                    <Preview><img src={result.imgUrl}/></Preview>
+                    <BackButton variant={"outlined"}>BACK TO CATALOG</BackButton>
+                    <Preview>
+                        <img src={result.base.imgUrl}/>
+                    </Preview>
                 </PreviewWrap>
                 <ContentWrap>
                     <Content>
-                        {/*<h1>{result.name}</h1>*/}
                         <Typography variant="h1" component="h2" gutterBottom>
-                            {result.name}
+                            {result.base.name}
                         </Typography>
                         <Typography variant="h6">
-                            {`Apple M1 chip with 8‑core CPU, 7‑core GPU, and 16‑core Neural Engine
-                                8GB unified memory
-                                256GB SSD storage
-                                Retina display with True Tone
-                                Backlit Magic Keyboard - US English
-                                Touch ID
-                                Force Touch trackpad
-                                Two Thunderbolt / USB 4 ports`}
+                            <ol>
+                                <li>
+                                    {result.cpus[cpu].coreNumber}-core {result.cpus[cpu].name} CPU.
+                                </li>
+                                <li>
+                                    {result.gpus.length > 0 ? result.gpus[gpu].name : ""}
+                                </li>
+                                <li>
+                                    {result.ram[ram].sizeGB} GB of RAM
+                                </li>
+                                <li>
+                                    {result.drives[drives].size} GB Storage
+                                </li>
+
+                            </ol>
                         </Typography>
                         <hr/>
                         <Typography variant="h4" gutterBottom>

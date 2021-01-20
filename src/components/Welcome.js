@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button, Link, TextField} from '@material-ui/core';
+import {Button, Link, TextField, Typography} from '@material-ui/core';
 import 'fontsource-roboto';
 import {Redirect} from "react-router";
 import {withRouter} from "react-router-dom";
@@ -8,22 +8,29 @@ import axios from "axios";
 import styled from "styled-components";
 
 
-const PStyle = styled.p`
+const Description = styled.div`
   font-family: Roboto, serif;
 `
 const DivStyle = styled.div`
-  //padding-top: 10px;
-  //margin: auto;
-  width: 300px;
-  height: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%);
-  position: absolute;
+  padding: 10px;
+
+  &#formWrap {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 `
 const RegWrap = styled(DivStyle)`
 `
 const ButtonStyle = styled(Button)`
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
 `
 const StyledLink = styled(Link)`
 `
@@ -65,7 +72,7 @@ class Welcome extends React.Component {
         return (
             <LoginScreen>
                 <DivStyle id="formWrap">
-                    <PStyle>LaptopStore</PStyle>
+                    <Typography align="center" variant="h4">LaptopStore</Typography>
                     <form>
                         <DivStyle>
                             <TextField
@@ -84,7 +91,7 @@ class Welcome extends React.Component {
                                 name="password"
                                 required="true"
                                 variant="outlined"
-                                onChange={this.props.passwordCHange}/>
+                                onChange={this.props.passwordChange}/>
                         </DivStyle>
                         <DivStyle id="buttons_bar">
                             <ButtonStyle
@@ -95,7 +102,7 @@ class Welcome extends React.Component {
                             </ButtonStyle>
                             <RegWrap id="registerDescription">
                                 <div>
-                                    <PStyle>Don't have an account? </PStyle>
+                                    <Description>Don't have an account? </Description>
                                     <StyledLink>
                                         Create new one
                                     </StyledLink>
